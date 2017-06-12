@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/casvil/fidget-spinner-server/issues"
   },
-  "homepage": "https://github.com/casvil/fidget-spinner-server#readme"
+  "homepage": "https://github.com/casvil/fidget-spinner-server#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
 }
