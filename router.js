@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
+const model = require('./model');
 // const ctrlMessages = require('./controller/messages');
 
 router.get('/', function (req, res) {
@@ -11,6 +12,19 @@ router.get('/user', function (req, res) {
   res.send('GET /user')
 })
 router.post('/user', function (req, res) {
+  console.log('-------------');
+  console.log(req.body);
+  console.log('-------------');
+  // let user = new UserScores({ name: 'Zildjian', score: 1000 });
+
+  // user.save(function (err) {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     console.log('meow');
+  //   }
+  // });
+
   res.send('POST /user')
 })
 router.get('/scores', function (req, res) {
