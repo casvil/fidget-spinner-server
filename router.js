@@ -10,15 +10,16 @@ router.get('/', function (req, res) {
 });
 
 router.get('/user', async function (req, res) {
-  let userscores = await model.find({});
+  console.log('new get!');
+  let userscores = await model.find({}).sort({'score': -1}).limit(20);
   res.send(userscores);
 });
 
-router.post('/user', function (req, res) {
+router.post('/user', async function (req, res) {
+  console.log('new post! ', req.body.name,': ', req.body.score);
+  let user = new model({ name: req.body.name, score: req.body.score });
 
-  let user = new model({ name: req.body.user, score: req.body.score });
-
-  user.save(function (err) {
+  await user.save(function (err) {
     if (err) {
       console.log(err);
     } else {
@@ -27,14 +28,6 @@ router.post('/user', function (req, res) {
   });
 
   res.send('POST /user')
-});
-
-router.get('/scores', function (req, res) {
-  res.send('GET /scores')
-});
-
-router.post('/score', function (req, res) {
-  res.send('POST /score')
 });
 
 module.exports = router;
